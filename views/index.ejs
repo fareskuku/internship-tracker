@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Tracker | Track Your Journey</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .circle-2 {
+            width: 500px;
+            height: 500px;
+            bottom: -200px;
+            right: -200px;
+            animation-delay: 5s;
+        }
+
+        .circle-3 {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        .hero-section {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 48px;
+            padding: 3rem 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .badge-new {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn-hero {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px rgba(99, 102, 241, 0.4);
+            color: white;
+        }
+
+        .btn-outline-hero {
+            background: transparent;
+            border: 2px solid #6366f1;
+            color: #6366f1;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-hero:hover {
+            background: #6366f1;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 1.75rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+        }
+
+        .feature-desc {
+            color: #64748b;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .stats-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .hero-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .btn-hero, .btn-outline-hero {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+
+<div class="animated-bg">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+</div>
+
+<div class="hero-section">
+    <div class="hero-card fade-in-up">
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-center text-lg-start">
+                <span class="badge-new">
+                    <i class="fas fa-rocket me-1"></i> Launch Your Career
+                </span>
+                
+                <h1 class="hero-title">
+                    Track Your Internship<br>Journey With Confidence
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Never miss an opportunity again. Keep all your internship applications 
+                    organized, track deadlines, and land your dream job with ease.
+                </p>
+                
+                <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
+                    <a href="/register" class="btn-hero">
+                        <i class="fas fa-user-plus"></i> Get Started Free
+                    </a>
+                    <a href="/login" class="btn-outline-hero">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                </div>
+                
+                <div class="stats-section">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="stat-number">500+</div>
+                            <small class="text-muted">Students</small>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-number">1000+</div>
+                            <small class="text-muted">Applications</small>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-number">50+</div>
+                            <small class="text-muted">Companies</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mt-4 mt-lg-0">
+                <div class="row g-3">
+                    <div class="col-6 fade-in-up delay-1">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="feature-title">Track Progress</h3>
+                            <p class="feature-desc">Monitor your application status from pending to offer</p>
+                        </div>
+                    </div>
+                    <div class="col-6 fade-in-up delay-2">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3 class="feature-title">Smart Reminders</h3>
+                            <p class="feature-desc">Never miss deadlines or interview dates again</p>
+                        </div>
+                    </div>
+                    <div class="col-6 fade-in-up delay-3">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h3 class="feature-title">Analytics</h3>
+                            <p class="feature-desc">Get insights about your application success rate</p>
+                        </div>
+                    </div>
+                    <div class="col-6 fade-in-up delay-1">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="feature-title">Secure & Private</h3>
+                            <p class="feature-desc">Your data is safe and encrypted</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

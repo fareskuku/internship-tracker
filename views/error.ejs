@@ -1,0 +1,12 @@
+<%- include('partials/header') %>
+<div class="container text-center mt-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <i class="fas fa-exclamation-triangle fa-5x text-warning mb-4"></i>
+            <h1 class="text-danger">Error</h1>
+            <p class="lead"><%= message %></p>
+            <a href="/dashboard" class="btn btn-primary mt-3">Go to Dashboard</a>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') %>

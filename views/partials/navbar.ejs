@@ -1,0 +1,30 @@
+<nav class="navbar-modern">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand-custom" href="/dashboard">
+            <i class="fas fa-briefcase"></i>
+            <span>Internship Tracker</span>
+        </a>
+        
+        <div class="d-flex align-items-center gap-3">
+            <div class="dropdown">
+                <button class="btn btn-light rounded-pill px-3 py-2 d-flex align-items-center gap-2" data-bs-toggle="dropdown">
+                    <i class="fas fa-user-circle fa-lg"></i>
+                    <span><%= user.fullname %></span>
+                    <i class="fas fa-chevron-down fa-xs"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3 mt-2">
+                    <li><a class="dropdown-item" href="/dashboard"><i class="fas fa-chart-line me-2"></i> Dashboard</a></li>
+                    <li><a class="dropdown-item" href="/applications"><i class="fas fa-list me-2"></i> My Applications</a></li>
+                    <li><a class="dropdown-item" href="/applications/add"><i class="fas fa-plus me-2"></i> Add Application</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-danger" href="/logout"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="px-4">

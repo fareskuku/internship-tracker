@@ -1,0 +1,67 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header bg-white border-0 pt-4 pb-0">
+                    <h2 class="mb-0"><i class="fas fa-edit me-2 text-warning"></i> Edit Application</h2>
+                    <p class="text-muted mt-2">Update your application details</p>
+                </div>
+                <div class="card-body p-4">
+                    <form action="/applications/<%= application.id %>/update" method="POST">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Company Name *</label>
+                                <input type="text" name="company_name" class="form-control" value="<%= application.company_name %>" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Position *</label>
+                                <input type="text" name="position" class="form-control" value="<%= application.position %>" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Location</label>
+                                <input type="text" name="location" class="form-control" value="<%= application.location || '' %>">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Status</label>
+                                <select name="status" class="form-select">
+                                    <option value="pending" <%= application.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                                    <option value="reviewed" <%= application.status === 'reviewed' ? 'selected' : '' %>>Reviewed</option>
+                                    <option value="interview" <%= application.status === 'interview' ? 'selected' : '' %>>Interview</option>
+                                    <option value="offered" <%= application.status === 'offered' ? 'selected' : '' %>>Offered</option>
+                                    <option value="rejected" <%= application.status === 'rejected' ? 'selected' : '' %>>Rejected</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Deadline</label>
+                                <input type="date" name="deadline" class="form-control" value="<%= application.deadline || '' %>">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Notes</label>
+                            <textarea name="notes" class="form-control" rows="4"><%= application.notes || '' %></textarea>
+                        </div>
+                        
+                        <div class="d-flex gap-2 justify-content-end">
+                            <a href="/applications" class="btn btn-secondary rounded-pill px-4">Cancel</a>
+                            <button type="submit" class="btn btn-warning rounded-pill px-4">
+                                <i class="fas fa-save me-2"></i> Update Application
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

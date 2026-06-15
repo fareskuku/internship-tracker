@@ -1,0 +1,18 @@
+<%
+let body = `
+<h2><i class="fas fa-eye"></i> Application Details</h2>
+<div class="card mt-3"><div class="card-body">
+    <h3>${application.company_name}</h3>
+    <p><strong>Position:</strong> ${application.position}</p>
+    <p><strong>Status:</strong> <span class="badge bg-${application.status === 'offered' ? 'success' : application.status === 'rejected' ? 'danger' : 'info'}">${application.status}</span></p>
+    <p><strong>Location:</strong> ${application.location || 'Not specified'}</p>
+    <p><strong>Date:</strong> ${new Date(application.application_date).toLocaleDateString()}</p>
+    ${application.deadline ? `<p><strong>Deadline:</strong> ${new Date(application.deadline).toLocaleDateString()}</p>` : ''}
+    ${application.notes ? `<p><strong>Notes:</strong><br>${application.notes}</p>` : ''}
+    <hr>
+    <a href="/applications/${application.id}/edit" class="btn btn-warning">Edit</a>
+    <a href="/applications" class="btn btn-secondary">Back</a>
+</div></div>
+`;
+%>
+<%- include('../layouts/main') %>
